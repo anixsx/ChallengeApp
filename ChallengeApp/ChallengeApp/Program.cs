@@ -1,68 +1,60 @@
-﻿int number = 4594;
-string numberInString = number.ToString();
-char[] letters = numberInString.ToArray();
+﻿using ChallengeApp;
+User user1 = new User("Krysia", "874rujyhdci");
+User user2 = new User("Andrzej", "874rujyhdci");
+User user3 = new User("Zosia", "874rujyhdci");
+User user4 = new User("Justyna", "874rujyhdci");
 
-int counter0 = 0;
-int counter1 = 0;
-int counter2 = 0;
-int counter3 = 0;
-int counter4 = 0;
-int counter5 = 0;
-int counter6 = 0;
-int counter7 = 0;
-int counter8 = 0;
-int counter9 = 0;
 
-foreach (char letter in letters)
+user1.AddScore(5);
+user1.AddScore(12);
+user1.AddScore(7);
+user1.AddScore(4);
+
+user2.AddScore(7);
+user2.AddScore(9);
+user2.AddScore(14);
+user2.AddScore(9);
+
+user3.AddScore(9);
+user3.AddScore(2);
+user3.AddScore(1);
+user3.AddScore(13);
+
+user4.AddScore(7);
+user4.AddScore(18);
+user4.AddScore(4);
+user4.AddScore(7);
+
+List<User> users = new List<User>()
 {
-    if (letter == '0')
+    user1, user2, user3
+};
+
+int maxResult = -1;
+User userWithMaxResult = null;
+
+foreach (var user in users)
+{
+    if (user1.Result > maxResult)
     {
-        counter0++;
+        userWithMaxResult = user1;
+        maxResult = user1.Result;
     }
-    else if (letter == '1')
+    else if (user2.Result > maxResult)
     {
-        counter1++;
+        userWithMaxResult = user2;
+        maxResult = user2.Result;
     }
-    else if (letter == '2')
+    else if (user3.Result > maxResult)
     {
-        counter2++;
+        userWithMaxResult = user3;
+        maxResult = user3.Result;
     }
-    else if (letter == '3')
+    else if (user4.Result > maxResult)
     {
-        counter3++;
+        userWithMaxResult = user4;
+        maxResult = user4.Result;
     }
-    else if (letter == '4')
-    {
-        counter4++;
     }
-    else if (letter == '5')
-    {
-        counter5++;
-    }
-    else if (letter == '6')
-    {
-        counter6++;
-    }
-    else if (letter == '7')
-    {
-        counter7++;
-    }
-    else if (letter == '8')
-    {
-        counter8++;
-    }
-    else if (letter == '9')
-    {
-        counter9++;
-    }
-}
-Console.WriteLine("0=>" + counter0);
-Console.WriteLine("1=>" + counter1);
-Console.WriteLine("2=>" + counter2);
-Console.WriteLine("3=>" + counter3);
-Console.WriteLine("4=>" + counter4);
-Console.WriteLine("5=>" + counter5);
-Console.WriteLine("6=>" + counter6);
-Console.WriteLine("7=>" + counter7);
-Console.WriteLine("8=>" + counter8);
-Console.WriteLine("9=>" + counter9);
+
+Console.WriteLine($"największa ilość punktów: {maxResult} {userWithMaxResult.Login}");
